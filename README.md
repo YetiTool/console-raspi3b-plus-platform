@@ -199,7 +199,7 @@ Note!! Last step, since after doing this, you'll loose the console on tty after 
 
 # Make image of result
 * [Shrink](https://github.com/qrti/shrink)
-  * From another Linux machine (if using Windows, here's [how to get a Linux terminal](https://www.youtube.com/watch?v=Ts3Je2jeK0c))
+  * From another Linux machine (if using Windows, download Ubuntu from the store and [setup the terminal](https://stackoverflow.com/questions/38832230/copy-paste-in-bash-on-ubuntu-on-windows))
   * `git clone https://github.com/qrti/shrink.git`
   * `sudo apt-get install -y gparted`
   * `sudo apt-get install -y pv`
