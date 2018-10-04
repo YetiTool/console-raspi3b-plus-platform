@@ -1,6 +1,7 @@
 Build steps to install Kivy onto a PipaOS 6.0 img for RasPi 3B+
 
-FAILS!!!!!!!
+**FAILS!!!!!!!**
+On loading a Kivy program, get this error: `[CRITICAL] [App ] Unable to get a Window, abort.`
 
 # Kivy Install on PipaOS 6-0 release
 
