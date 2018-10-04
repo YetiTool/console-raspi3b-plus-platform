@@ -125,7 +125,7 @@ To enable the pi to autostart EasyCut app on booting
        ```
        #!/bin/bash
        echo "start easycut"
-       cd asmcnc_skava_ui/src/ #why???
+       cd /home/pi/easycut-smartbench/src/
        exec python main.py
        ```
   * make sure script is executable:
