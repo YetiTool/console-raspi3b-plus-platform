@@ -197,6 +197,13 @@ Note!! Last step, since after doing this, you'll loose the console on tty after 
   * `sudo systemctl disable getty@tty1.service`
 
 
+# Make image of result
+* [Shrink](https://github.com/qrti/shrink)
+  * From another Linux machine (if using Windows, here's [how to get a Linux terminal](https://www.youtube.com/watch?v=Ts3Je2jeK0c))
+  * `git clone https://github.com/qrti/shrink.git`
+  * `sudo apt-get install -y gparted`
+  * `sudo apt-get install -y pv`
+
 
 # Useful Links
 * https://scribles.net/customizing-boot-up-screen-on-raspberry-pi/
