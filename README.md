@@ -8,7 +8,7 @@ For the RasPi3B+ and 7" touchscreen, this build installs:
 
 ## HW resources
 * RasPi 3B+ and power supply
-* Official 7" RasPi touchscreen, connected
+* Official 7" RasPi touchscreen, connected (steps below are **not** for HDMI output) 
 * USB keyboard (for build only)
 * microSD card (4Gb min)
 * microSD card reader 
