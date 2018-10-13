@@ -77,6 +77,9 @@ Build steps mostly taken from Kivy [site](https://kivy.org/doc/stable/installati
   * `sudo pip install -U Cython==0.28.2`
 * kivy (long install!)
   * `sudo pip install git+https://github.com/kivy/kivy.git@1.10.1`
+* Test: the showcase program should now run (touchscreen will not work, but need to run file to create config file for next step)
+  * `python /usr/local/share//kivy-examples/demo/showcase/main.py`
+* Exit program (Ctrl + C)
 * config touchscreen to accept input
   * `sudo nano ~/.kivy/config.ini`
   * ... under [input] add
@@ -85,8 +88,7 @@ Build steps mostly taken from Kivy [site](https://kivy.org/doc/stable/installati
     mtdev_%(name)s = probesysfs,provider=mtdev
     hid_%(name)s = probesysfs,provider=hidinput
     ```
-* Test: the showcase program should now run.
-  * `python /usr/local/share//kivy-examples/demo/showcase/main.py`
+
 
 # EasyCut installation
 EasyCut is YetiTool's UI for SmartBench
