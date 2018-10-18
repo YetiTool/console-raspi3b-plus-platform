@@ -53,6 +53,8 @@ For the RasPi3B+ and 7" touchscreen, this build installs:
       * B2 Console Autologin
     * <5> Interfacing options - assuming you want to SSH into Pi for further build steps (recommended)
       * P2 SSH -> Yes
+    * <7> Advanced Options
+      * A3 Memory Split -> 128MB
     * Exit, reboot
 
 ## SSH connection
