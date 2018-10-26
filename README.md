@@ -133,7 +133,7 @@ To enable the pi to autostart EasyCut app on booting
 
     [Service]
     Type=idle 
-    ExecStart=/home/pi/starteasycut.sh > /home/pi/easycut.log 2>&1
+    ExecStart=/home/pi/starteasycut.sh
     User=pi
 
     [Install]
