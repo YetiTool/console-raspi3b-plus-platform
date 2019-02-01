@@ -1,6 +1,6 @@
 For the RasPi3B+ and 7" touchscreen, this build installs:
 * Raspbian Stretch Lite OS, 
-* [Kivy](https://kivy.org/#home) (to provides UI framework)
+* [Kivy](https://kivy.org/#home) (to provides UI framework) - note release version we're testing in the build step
 * EasyCut (a [YetiTool](https://yetitool.com) app to run SmartBench's console)
 * Also, autostart and silent boot steps. 
 
@@ -77,7 +77,7 @@ Build steps mostly taken from Kivy [site](https://kivy.org/doc/stable/installati
   * `sudo apt install -y python-pip`
 * cython install (long time!)
   * `sudo pip install -U Cython==0.28.2`
-* kivy (long install!)
+* kivy (long install!) - currently testing 1.10.1
   * `sudo pip install git+https://github.com/kivy/kivy.git@1.10.1`
 * Test: the showcase program should now run (touchscreen will not work, but need to run file to create config file for next step)
   * `python /usr/local/share//kivy-examples/demo/showcase/main.py`
