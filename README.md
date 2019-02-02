@@ -160,7 +160,7 @@ sudo plymouth-set-default-theme -R spinfinity
 ...where spinfinity can be swapped to <details, fade-in, glow, script, solar, spinfinity, spinner, text, tribar>
 
 Replace `/usr/share/plymouth/debian-logo.png` with new splashscreen image
-* sudo cp ~/easycut-smartbench/src/asmcnc/skavaUI/img/debian-logo.png /usr/share/plymouth/debian-logo.png
+* 'sudo cp ~/easycut-smartbench/src/asmcnc/skavaUI/img/debian-logo.png /usr/share/plymouth/debian-logo.png'
 
 # Silent boot procedure
 Note!! Last step, since after doing this, you'll loose the console on tty after boot. You can swap tty's (terminals) though (CTRL+ALT+F<1-6>) to see one.
