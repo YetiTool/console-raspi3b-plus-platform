@@ -158,7 +158,8 @@ sudo plymouth-set-default-theme -l
 sudo plymouth-set-default-theme -R spinfinity  
 ```
 ...where spinfinity can be swapped to <details, fade-in, glow, script, solar, spinfinity, spinner, text, tribar>
-Replace `/usr/share/plymouth/debian-logo.png` with new image
+
+* Replace `/usr/share/plymouth/debian-logo.png` with new splashscreen image
 
 # Silent boot procedure
 Note!! Last step, since after doing this, you'll loose the console on tty after boot. You can swap tty's (terminals) though (CTRL+ALT+F<1-6>) to see one.
@@ -168,7 +169,7 @@ Note!! Last step, since after doing this, you'll loose the console on tty after 
 * remove verbose logging at startup
   * `sudo nano /boot/cmdline.txt`
   * Then, replace `console=tty1` with `console=tty3`. This redirects boot messages to tty3.
-  * add below at the end of the line
+  * add to the end of the line:
     * `splash quiet plymouth.ignore-serial-consoles logo.nologo vt.global_cursor_default=0`
 * change the auto login in systemd (Hides the login message when auto-login happens)
   * `sudo nano /etc/systemd/system/autologin\@.service`
@@ -188,8 +189,12 @@ Note!! Last step, since after doing this, you'll loose the console on tty after 
 * Suppress login prompt on console (tty1)
   * `sudo systemctl disable getty@tty1.service`
 
+# You're done!
+
+Try a 'sudo reboot' - hope you didn't get any typo's :-)
 
 # Make image of result
+UNTESTED:
 * [Shrink](https://github.com/qrti/shrink)
   * From another Linux machine (if using Windows, download Ubuntu from the store and [setup the terminal](https://stackoverflow.com/questions/38832230/copy-paste-in-bash-on-ubuntu-on-windows))
   * `git clone https://github.com/qrti/shrink.git`
