@@ -33,6 +33,7 @@ For the RasPi3B+ and 7" touchscreen, this build installs:
   * Burn image on to SD card
 
 ## Pi Config
+You will need to connect a keyboard to the RasPi, and use the screen to follow these steps.
 * Login:
   * user: pi
   * pass: raspberry
@@ -56,10 +57,11 @@ For the RasPi3B+ and 7" touchscreen, this build installs:
     * <7> Advanced Options
       * A3 Memory Split -> 128MB
     * Exit, reboot
+* Gather the Pi's IP address
+  * Find your Pi's IP with `sudo ifconfig` (under "wlan0: ...", "inet ..." e.g. 192.168.0.27
 
 ## SSH connection
-You can now securely connect via SSH.
-Find your Pi's IP with `sudo ifconfig`.
+You can now securely connect to your RasPi via SSH.
 
 ## Kivy Install
 Build steps mostly taken from Kivy [site](https://kivy.org/doc/stable/installation/installation-rpi.html), with added `pip` install step.
