@@ -54,6 +54,9 @@ You will need to connect a keyboard to the RasPi, and use the screen to follow t
       * B2 Console Autologin
     * <5> Interfacing options - assuming you want to SSH into Pi for further build steps (recommended)
       * P2 SSH -> Yes
+      * P6 Serial (if using UART comms to communicate with Arduino chip)
+        * Enable login shell accessible over serial -> No
+        * Enable Serial port hardware -> Yes
     * <7> Advanced Options
       * A3 Memory Split -> 128MB
     * Exit, reboot
