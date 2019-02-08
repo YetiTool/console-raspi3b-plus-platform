@@ -66,6 +66,13 @@ You will need to connect a keyboard to the RasPi, and use the screen to follow t
 ## SSH connection
 You can now securely connect to your RasPi via SSH.
 
+We like to use the PuTTY SSH client, and FileZilla for SSH file transfer. 
+
+* PuTTY can be obtained [here](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html).
+
+* FileZilla can be found [here](https://filezilla-project.org/download.php?type=client).
+
+
 ## Kivy Install
 Build steps mostly taken from Kivy [site](https://kivy.org/doc/stable/installation/installation-rpi.html), with added `pip` install step.
 * Kivy dependencies
