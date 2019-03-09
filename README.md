@@ -112,11 +112,8 @@ EasyCut is YetiTool's UI for SmartBench
     sudo mkdir /media/usb
     sudo mkdir ~/router_ftp/
     ```
-* Clone from GitHub, with EITHER:
-  * Without SSH keys: 
-    * `cd && git clone https://github.com/YetiTool/easycut-smartbench.git`
-  * Or, with [SSH key setup:](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
-    * `cd && git clone git@github.com:Neex101/asmcnc_skava_ui.git` <git address found under 'Clone or download' button, selecting SSH option> (`cd &&` means go home, and if that works, then do next part)
+* Clone from the SmartBench repository:
+  * `cd && git clone https://github.com/YetiTool/easycut-smartbench.git`
 
 # Autostart
 To enable the pi to autostart EasyCut app on booting
