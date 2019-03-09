@@ -1,17 +1,17 @@
 For the RasPi3B+ and 7" touchscreen, this build installs:
-* Raspbian Stretch Lite OS, 
+* Raspbian Stretch Lite OS,
 * [Kivy](https://kivy.org/#home) (to provides UI framework) - note release version we're testing in the build step
 * EasyCut (a [YetiTool](https://yetitool.com) app to run SmartBench's console)
-* Also, autostart and silent boot steps. 
+* Also, autostart and silent boot steps.
 
 # Resources
 
 ## HW resources
 * RasPi 3B+ and power supply
-* Official 7" RasPi touchscreen, connected (steps below are **not** for HDMI output) 
+* Official 7" RasPi touchscreen, connected (steps below are **not** for HDMI output)
 * USB keyboard (for build only)
 * microSD card (4Gb min)
-* microSD card reader 
+* microSD card reader
 
 ## SW resources
 * Raspbian Stretch Lite, [torrent here](https://downloads.raspberrypi.org/raspbian_lite_latest.torrent)
@@ -66,7 +66,7 @@ You will need to connect a keyboard to the RasPi, and use the screen to follow t
 ## SSH connection
 You can now securely connect to your RasPi via SSH.
 
-We like to use the PuTTY SSH client, and FileZilla for SSH file transfer. 
+We like to use the PuTTY SSH client, and FileZilla for SSH file transfer.
 
 * PuTTY can be obtained [here](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html).
 
@@ -141,7 +141,7 @@ To enable the pi to autostart EasyCut app on booting
     After=multi-user.target
 
     [Service]
-    Type=idle 
+    Type=idle
     ExecStart=/home/pi/starteasycut.sh
     User=pi
 
@@ -162,7 +162,7 @@ To enable the pi to autostart EasyCut app on booting
 ```
 sudo apt-get install plymouth plymouth-themes
 sudo plymouth-set-default-theme -l
-sudo plymouth-set-default-theme -R spinfinity  
+sudo plymouth-set-default-theme -R spinfinity
 ```
 ...where spinfinity can be swapped to <details, fade-in, glow, script, solar, spinfinity, spinner, text, tribar>
 
@@ -198,7 +198,6 @@ Note!! Last step, since after doing this, you'll loose the console on tty after 
   * `sudo systemctl disable getty@tty1.service`
 
 # You're done!
-
 Try a 'sudo reboot' - hope you didn't get any typo's :-)
 
 # Make image of result
@@ -208,7 +207,6 @@ UNTESTED:
   * `git clone https://github.com/qrti/shrink.git`
   * `sudo apt-get install -y gparted`
   * `sudo apt-get install -y pv`
-
 
 # Useful Links
 * https://scribles.net/customizing-boot-up-screen-on-raspberry-pi/
