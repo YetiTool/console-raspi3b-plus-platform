@@ -1,0 +1,10 @@
+---
+- name: Initialise via Ansible
+  hosts: localhost
+  become: yes
+  tasks:
+  - name: Install packages
+    package:
+      name: "{{ item }}"
+      state: present
+    with_items: "{{ pkgs }}"
