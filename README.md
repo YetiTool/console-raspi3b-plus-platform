@@ -32,6 +32,11 @@ For the RasPi3B+ and 7" touchscreen, this build installs:
   * App: Etcher [for MS Windows](https://etcher.io/)
   * Burn image on to SD card
 
+## Bootstrapping
+```
+sudo apt -y install ansible
+```
+
 ## Pi Config
 You will need to connect a keyboard to the RasPi, and use the screen to follow these steps.
 * Login:
