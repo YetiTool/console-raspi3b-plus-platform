@@ -8,3 +8,15 @@
       name: "{{ item }}"
       state: present
     with_items: "{{ pkgs }}"
+  - name: Copy Ansible service config
+    template: 
+      src=ansible.service
+      dest=/lib/systemd/system/ansible.service
+      mode=644
+  - name: Reload systemctl to re-read configs
+    systemd:
+      name: ansible.service
+      daemon_reload: yes
+      state: started 
+      enabled: yes 
+      masked: no

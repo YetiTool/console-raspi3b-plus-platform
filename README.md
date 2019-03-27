@@ -33,8 +33,17 @@ For the RasPi3B+ and 7" touchscreen, this build installs:
   * Burn image on to SD card
 
 ## Bootstrapping
+Initial bootstrapping for Ansible.
 ```
 sudo apt -y install ansible
+cd && git clone https://github.com/YetiTool/console-raspi3b-plus-platform.git
+cd console-raspi3b-plus-platform/ansible
+ansible-playbook -v -i hosts -l localhost init.yaml
+```
+
+Note: An Ansible service will be added to `systemctl`, so for future Ansible runs, or for integration into EasyCut:
+```
+sudo systemctl restart ansible.service
 ```
 
 ## Pi Config

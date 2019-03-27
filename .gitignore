@@ -1,0 +1,2 @@
+# Ignore any Ansible failures
+init.retry
