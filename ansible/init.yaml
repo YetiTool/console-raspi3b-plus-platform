@@ -8,3 +8,19 @@
       name: "{{ item }}"
       state: present
     with_items: "{{ pkgs }}"
+  - name: Set Ansible runs as a service
+    template: 
+      src=ansible.service
+      dest=/lib/systemd/system/ansible.service
+      mode=644
+  - name: Reload systemctl to re-read configs
+    systemd:
+      name: ansible.service
+      daemon_reload: yes
+      state: started 
+      enabled: yes 
+      masked: no
+  - name: Enable the Ansible Service and ensure it is not masked
+    systemd:
+      name: ansible.service
+ 

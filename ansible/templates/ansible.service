@@ -1,0 +1,15 @@
+[Unit]
+Description=Single Ansible run as a single run service
+Requires=network.target
+After=syslog.target network.target
+
+[Service]
+Environment="ANSIBLE_CONFIG=/home/pi/console-raspi3b-plus-platform/ansible/ansible.cfg"
+Environment="ANSIBLE_INVENTORY=/home/pi/console-raspi3b-plus-platform/ansible/hosts"
+Environment="ANSIBLE_LIBRARY=/home/pi/console-raspi3b-plus-platform/ansible/"
+ExecStart=/usr/bin/ansible-playbook -v -l localhost /home/pi/console-raspi3b-plus-platform/ansible/init.yaml
+ExecStop=/bin/false
+User=root
+
+[Install]
+WantedBy=multi-user.target
