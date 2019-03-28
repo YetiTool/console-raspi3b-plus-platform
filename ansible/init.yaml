@@ -8,11 +8,13 @@
       name: "{{ item }}"
       state: present
     with_items: "{{ pkgs }}"
+
   - name: Copy Ansible service config
     template: 
       src=ansible.service
       dest=/lib/systemd/system/ansible.service
       mode=644
+
   - name: Reload systemctl to re-read configs
     systemd:
       name: ansible.service
@@ -20,3 +22,78 @@
       state: started 
       enabled: yes 
       masked: no
+
+  - name: Create bash script to run app
+    copy:
+      src: starteasycut.sh
+      dest: /home/pi/
+      owner: pi
+      mode: 0700
+
+  - name: Create systemd service file
+    copy:
+      src: easycut.service
+      dest: /lib/systemd/system/
+      owner: root
+      group: root
+      mode: 0644
+
+  - name: Create easycut service
+    service:
+      name: easycut.service
+      enabled: yes
+      state: started
+    notify: reload systemctl
+
+  - name: Configure plymouth splashscreen
+    command: 'plymouth-set-default-theme -R spinfinity'
+
+  - name: Replace splashscreen image
+    copy:
+      src: ~/graphics/yeti-splash1.png
+      dest: /usr/share/plymouth/debian-logo.png
+      owner: root
+      group: root
+      mode: 0644
+
+  - name: Remove rainbow square
+    lineinfile:
+      path: /boot/config.txt
+      regexp: '^disable_splash='
+      line: 'disable_splash=1'
+
+  - name: Redirect boot messages to tty3
+    replace:
+      path: /boot/cmdline.txt
+      regexp: 'console=tty1'
+      replace: 'console=tty3'
+
+  - name: Remove verbose logging at startup
+    replace:
+      path: /boot/cmdline.txt
+      regexp: '(AllowUsers(?!.*\b{{ user_name }}\b).*)$'
+      replace: '\1 {{ user_name }}'
+
+  - name: Hide login message during auto-login
+    lineinfile:
+      path: /etc/systemd/system/autologin\@.service
+      regexp: '^ExecStart='
+      line: 'ExecStart=-/sbin/agetty --skip-login --noclear --noissue --login-options "-f pi" %I $TERM'
+
+  - name: Hush login
+    file:
+      path: ~/.hushlogin
+      owner: pi
+
+  - name: Suppress kernel messages
+    blockinfile:
+      dest: /etc/rc.local
+      marker: "#Suppress Kernel Messages"
+      block: |
+        dmesg --console-off
+      insertbefore: "exit 0"
+
+  - name: Suppress login prompt on console (tty1)
+    systemd:
+      name: 'getty@tty1.service'
+      enabled: no

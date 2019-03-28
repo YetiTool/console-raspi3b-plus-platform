@@ -1,0 +1,11 @@
+[Unit]
+Description=run easycut service and redirect stderr and stdout to a log file
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/home/pi/starteasycut.sh
+User=pi
+
+[Install]
+WantedBy=multi-user.target

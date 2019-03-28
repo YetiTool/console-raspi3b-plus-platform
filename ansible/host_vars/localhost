@@ -1,2 +1,4 @@
 pkgs:
   python-pip
+  plymouth
+  plymouth-themes
