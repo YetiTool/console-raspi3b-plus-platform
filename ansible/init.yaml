@@ -9,7 +9,7 @@
       state: present
     with_items: "{{ pkgs }}"
   - name: Copy Ansible service config
-    template: 
+    template:
       src=ansible.service
       dest=/lib/systemd/system/ansible.service
       mode=644
@@ -17,6 +17,37 @@
     systemd:
       name: ansible.service
       daemon_reload: yes
-      state: started 
-      enabled: yes 
+      state: started
+      enabled: yes
       masked: no
+  - name: Copy Support service start script
+    template:
+      src=support-start.sh
+      dest=/usr/local/bin/support-start.sh
+      mode=544
+      owner=pi
+  - name: Copy Support service startup script
+    template:
+      src=support-stop.sh
+      dest=/usr/local/bin/support-stop.sh
+      mode=544
+      owner=pi
+  - name: Copy Support service config
+    template:
+      src=support.service
+      dest=/lib/systemd/system/support.service
+      mode=644
+  - name: Reload systemctl to re-read configs
+    systemd:
+      name: support.service
+      daemon_reload: yes
+      enabled: no
+      masked: no
+  - name: Copy ProFTPD service config
+    template:
+      src=proftpd-jobCache.conf
+      dest=/etc/proftpd/conf.d/jobCache.conf
+  - name: Restarting ProFTPD
+    systemd:
+      name: proftpd.service
+      state: restarted

@@ -1,0 +1,12 @@
+[Unit]
+Description=Support Access
+Requires=network.target
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/local/bin/support-start.sh
+ExecStop=/usr/local/bin/support-stop.sh
+User=pi
+
+[Install]
+WantedBy=multi-user.target
