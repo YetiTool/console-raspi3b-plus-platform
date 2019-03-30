@@ -1,2 +1,3 @@
 pkgs:
-  python-pip
+- python-pip
+- proftpd-basic
