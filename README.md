@@ -33,20 +33,11 @@ For the RasPi3B+ and 7" touchscreen, this build installs:
   * Burn image on to SD card
 
 ## Bootstrapping
-Initial bootstrapping for Ansible.
-```
-sudo apt -y install ansible
-cd && git clone https://github.com/YetiTool/console-raspi3b-plus-platform.git
-cd console-raspi3b-plus-platform/ansible
-ansible-playbook -v -i hosts -l localhost init.yaml
-```
+The intended flow is to install base packages for Ansible and clone the core repositories needed on the pi, do an initial `ansible-playbook` run, then all future updates to the platform will be managed through Ansible.
 
-Note: An Ansible service will be added to `systemctl`, so for future Ansible runs, or for integration into EasyCut:
-```
-sudo systemctl restart ansible.service
-```
+Bootstrapping is currently still done largly by manual steps, but over time, most of the build steps will be [managed by Ansible](ansible/README.md).
 
-## Pi Config
+### Manual Pi Config
 You will need to connect a keyboard to the RasPi, and use the screen to follow these steps.
 * Login:
   * user: pi
@@ -77,7 +68,7 @@ You will need to connect a keyboard to the RasPi, and use the screen to follow t
 * Gather the Pi's IP address
   * Find your Pi's IP with `sudo ifconfig` (under "wlan0: ...", "inet ..." e.g. 192.168.0.27
 
-## SSH connection
+#### SSH connection
 You can now securely connect to your RasPi via SSH.
 
 We like to use the PuTTY SSH client, and FileZilla for SSH file transfer.
@@ -87,7 +78,7 @@ We like to use the PuTTY SSH client, and FileZilla for SSH file transfer.
 * FileZilla can be found [here](https://filezilla-project.org/download.php?type=client).
 
 
-## Kivy Install
+#### Kivy Install
 Build steps mostly taken from Kivy [site](https://kivy.org/doc/stable/installation/installation-rpi.html), with added `pip` install step.
 * Kivy dependencies
   * `sudo apt-get update`
@@ -115,8 +106,7 @@ Build steps mostly taken from Kivy [site](https://kivy.org/doc/stable/installati
     hid_%(name)s = probesysfs,provider=hidinput
     ```
 
-
-# EasyCut installation
+#### EasyCut installation
 EasyCut is YetiTool's UI for SmartBench
 * Dependencies
   * ```
@@ -127,7 +117,7 @@ EasyCut is YetiTool's UI for SmartBench
 * Clone from the SmartBench repository:
   * `cd && git clone https://github.com/YetiTool/easycut-smartbench.git`
 
-# Autostart
+#### Autostart
 To enable the pi to autostart EasyCut app on booting
 * create bash script to run app
   * `touch /home/pi/starteasycut.sh`
@@ -170,7 +160,7 @@ To enable the pi to autostart EasyCut app on booting
     * `sudo systemctl status easycut`
     * `sudo journalctl _SYSTEMD_UNIT=easycut.service`
 
-# Splashscreen
+#### Splashscreen
 ```
 sudo apt-get install plymouth plymouth-themes
 sudo plymouth-set-default-theme -l
@@ -181,7 +171,7 @@ sudo plymouth-set-default-theme -R spinfinity
 Replace `/usr/share/plymouth/debian-logo.png` with new splashscreen image
 * 'sudo cp ~/easycut-smartbench/src/asmcnc/skavaUI/img/debian-logo.png /usr/share/plymouth/debian-logo.png'
 
-# Silent boot procedure
+#### Silent boot procedure
 Note!! Last step, since after doing this, you'll loose the console on tty after boot. You can swap tty's (terminals) though (CTRL+ALT+F<1-6>) to see one.
 * remove rainbow square
   * `sudo nano /boot/config.txt`
@@ -202,14 +192,28 @@ Note!! Last step, since after doing this, you'll loose the console on tty after 
 * Suppress Kernel Messages
   * `sudo nano /etc/rc.local`
     * ...add this before 'exit 0':
-      * ```
-        #Suppress Kernel Messages
-        dmesg --console-off
-        ```
+```
+#Suppress Kernel Messages
+dmesg --console-off
+```
+
 * Suppress login prompt on console (tty1)
   * `sudo systemctl disable getty@tty1.service`
 
-# You're done!
+### Ansible
+```
+sudo apt -y install ansible
+cd && git clone https://github.com/YetiTool/console-raspi3b-plus-platform.git
+cd console-raspi3b-plus-platform/ansible
+ansible-playbook -v -i hosts -l localhost init.yaml
+```
+
+Note: After the above initial Ansible run above, a service will be added to `systemctl`, so for future Ansible runs, or for integration into EasyCut:
+```
+sudo systemctl restart ansible.service
+```
+
+#### You're done!
 Try a 'sudo reboot' - hope you didn't get any typo's :-)
 
 # Make image of result

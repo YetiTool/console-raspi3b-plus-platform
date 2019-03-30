@@ -20,3 +20,11 @@
       state: started 
       enabled: yes 
       masked: no
+  - name: Copy ProFTPD service config
+    template:
+      src=proftpd-jobCache.conf
+      dest=/etc/proftpd/conf.d/jobCache.conf
+  - name: Restarting ProFTPD
+    systemd:
+      name: proftpd.service
+      state: restarted
