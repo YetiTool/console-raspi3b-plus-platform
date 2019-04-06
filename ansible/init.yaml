@@ -20,6 +20,12 @@
       state: started
       enabled: yes
       masked: no
+  - name: Create SSH Key pair
+    command : ssh-keygen -f rsa -b 4096 -f /home/pi/.ssh/id_rsa -N ""
+    become: yes
+    become_user: pi
+    args:
+       creates: /home/pi/.ssh/id_rsa
   - name: Copy Support service start script
     template:
       src=support-start.sh
