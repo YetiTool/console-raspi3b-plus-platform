@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# CPU Serial
+# CPU Serial == PI Serial
 PI_SERIAL=`cat /proc/cpuinfo | grep Serial | awk ' {print $3}' | sed 's/^0*//'"`
 
 ANSIBLE_CONFIG="/home/pi/console-raspi3b-plus-platform/ansible/ansible.cfg"
@@ -12,4 +12,3 @@ ANSIBLE_LIBRARY="/home/pi/console-raspi3b-plus-platform/ansible/"
 	    -v \
 	    -l localhost \
 	    /home/pi/console-raspi3b-plus-platform/ansible/init.yaml
-
