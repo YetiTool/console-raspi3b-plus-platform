@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # CPU Serial == PI Serial
-PI_SERIAL=`cat /proc/cpuinfo | grep Serial | awk ' {print $3}' | sed 's/^0*//'`
+export PI_SERIAL=`cat /proc/cpuinfo | grep Serial | awk ' {print $3}' | sed 's/^0*//'`
 
-ANSIBLE_CONFIG="/home/pi/console-raspi3b-plus-platform/ansible/ansible.cfg"
-ANSIBLE_INVENTORY="/home/pi/console-raspi3b-plus-platform/ansible/hosts"
-ANSIBLE_LIBRARY="/home/pi/console-raspi3b-plus-platform/ansible/"
+export ANSIBLE_CONFIG="/home/pi/console-raspi3b-plus-platform/ansible/ansible.cfg"
+export ANSIBLE_INVENTORY="/home/pi/console-raspi3b-plus-platform/ansible/hosts"
+export ANSIBLE_LIBRARY="/home/pi/console-raspi3b-plus-platform/ansible/"
 
 /usr/bin/ansible-playbook \
+	    /home/pi/console-raspi3b-plus-platform/ansible/init.yaml \
 	    -e "serial=$PI_SERIAL" \
-	    -v \
-	    /home/pi/console-raspi3b-plus-platform/ansible/init.yaml
+	    -v
