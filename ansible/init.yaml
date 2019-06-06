@@ -1,6 +1,6 @@
 ---
 - name: Initialise via Ansible
-  hosts: localhost
+  hosts: all
   become: yes
   tasks:
   - name: Install packages
