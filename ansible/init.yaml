@@ -54,6 +54,13 @@
       daemon_reload: yes
       enabled: no
       masked: no
+  - hostname:
+      name: "{{ serial }}"
+  - name: Add IP address of all hosts to all hosts
+    lineinfile:
+      dest: /etc/hosts
+      line: "127.0.0.1 {{ serial }}"
+      state: present
   - name: Copy ProFTPD service config
     template:
       src=proftpd-jobCache.conf
