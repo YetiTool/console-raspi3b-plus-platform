@@ -1,0 +1,14 @@
+---
+- name: Install packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: '{{ splashscreen_pkgs }}'
+
+- name: Replace splashscreen image
+  copy:
+    src: ~/easycut-smartbench/src/asmcnc/skavaUI/img/debian-logo.png
+    dest: /usr/share/plymouth/debian-logo.png
+    owner: root
+    group: root
+    mode: 0644

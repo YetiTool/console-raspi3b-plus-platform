@@ -1,0 +1,18 @@
+---
+- name: Install packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ pkgs }}"
+
+- name: Autostart
+  import_tasks: autostart.yaml
+  tags: autostart
+
+- name: Splashscreen
+  import_tasks: splashscreen.yaml
+  tags: splashscreen
+
+- name: Silent boot procedure
+  import_tasks: silent_boot.yaml
+  tags: silent_boot

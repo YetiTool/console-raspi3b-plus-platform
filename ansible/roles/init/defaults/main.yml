@@ -1,0 +1,5 @@
+---
+pi_user: pi
+splashscreen_pkgs:
+- plymouth
+- plymouth-themes

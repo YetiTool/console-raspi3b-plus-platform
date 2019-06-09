@@ -1,0 +1,51 @@
+---
+- name: Remove rainbow square
+  lineinfile:
+    path: /boot/config.txt
+    regexp: '^disable_splash='
+    line: 'disable_splash=1'
+
+- name: Redirect boot messages to tty3
+  replace:
+    path: /boot/cmdline.txt
+    regexp: 'console=tty1'
+    replace: 'console=tty3'
+
+- name: Remove verbose logging at startup
+  lineinfile:
+		dest: /boot/cmdline.txt
+    backup=True
+    backrefs=True
+    state=present
+    regexp='(^\s+kernel(\s+(?!{{ item }})[\w=/\-\.]+)*)\s*$'
+    line='\1 {{ item }}'
+	with_items:
+	- splash
+	- quiet
+	- plymouth.ignore-serial-consoles
+	- logo.nologo
+	- 'vt.global_cursor_default=0'
+
+- name: Hide login message during auto-login
+  lineinfile:
+    path: /etc/systemd/system/autologin\@.service
+    regexp: '^ExecStart='
+    line: 'ExecStart=-/sbin/agetty --skip-login --noclear --noissue --login-options "-f {{ pi_user}}" %I $TERM'
+
+- name: Hush login
+  file:
+    path: '/home/{{ pi_user }}/.hushlogin'
+    owner: '{{ pi_user }}'
+
+- name: Suppress kernel messages
+  blockinfile:
+    dest: /etc/rc.local
+    marker: "#Suppress Kernel Messages"
+    block: |
+      dmesg --console-off
+    insertbefore: "exit 0"
+
+- name: Suppress login prompt on console (tty1)
+  systemd:
+    name: 'getty@tty1.service'
+    enabled: no
