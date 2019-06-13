@@ -8,6 +8,12 @@
       name: "{{ item }}"
       state: present
     with_items: "{{ pkgs }}"
+  - name: Define glbal export for current tag
+    template:
+      src=profile-platform-v-var.sh
+      dest=/etc/profile.d/platform-v-var.sh
+      mode=544
+      owner=pi
   - name: Copy Ansible service config
     template:
       src=ansible.service
