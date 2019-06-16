@@ -5,14 +5,12 @@
     state: present
   with_items: "{{ pkgs }}"
 
-- name: Autostart
-  import_tasks: autostart.yaml
+- name: AutoStart
+  include: autostart.yaml
   tags: autostart
 
-- name: Splashscreen
-  import_tasks: splashscreen.yaml
+- include: splashscreen.yaml
   tags: splashscreen
 
-- name: Silent boot procedure
-  import_tasks: silent_boot.yaml
+- include: silent_boot.yaml
   tags: silent_boot

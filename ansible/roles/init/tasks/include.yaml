@@ -1,0 +1,12 @@
+---
+- shell: 'egrep -c "kernel .* {{ entry }}( |$)" "{{ file }}" | cat'
+  register: entry_exists
+
+#- debug:
+#    msg: "{{ entry_exists }}"
+
+- replace:
+    dest: "{{ file }}"
+    regexp: '^(kernel .*)$'
+    replace: "\\1 {{ entry }}"
+  when: entry_exists.stdout == "0"
