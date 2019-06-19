@@ -12,7 +12,7 @@
     replace: 'console=tty3'
 
 - name: Remove verbose logging at startup
-  include: include.yaml entry='{{ item }}' file='/boot/cmdline.txt'
+  include: include.yaml entry="{{ item }}" file='/boot/cmdline.txt'
   with_items:
     - splash
     - quiet
@@ -28,9 +28,9 @@
 
 - name: Hush login
   file:
-    dest: '/home/{{ pi_user }}/.hushlogin'
-    owner: '{{ pi_user }}'
-    group: '{{ pi_user }}'
+    dest: "/home/{{ pi_user }}/.hushlogin"
+    owner: "{{ pi_user }}"
+    group: "{{ pi_user }}"
     state: touch
 
 - name: Suppress kernel messages

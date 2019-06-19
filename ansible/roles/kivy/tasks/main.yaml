@@ -1,0 +1,38 @@
+---
+- name: Install kivy packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ kivy_pkgs }}"
+
+- name: Check for Cython module
+  shell: pip freeze | grep -c '^Cython==0.28.2$'
+  register: cython_exists
+
+- name: Install Cython module
+  shell: 'pip install -U Cython==0.28.2'
+  when: cython_exists.stdout == "0"
+
+- name: Check for kivy module
+  shell: pip freeze | grep -c '^Kivy==1.10.1$'
+  register: kivy_exists
+
+- name: Install kivy module
+  shell: pip install git+https://github.com/kivy/kivy.git@1.10.1
+  when: kivy_exists.stdout == "0"
+
+- name: Create kivy config directory
+  file:
+    dest: "/home/{{ pi_user }}/.kivy"
+    owner: "{{ pi_user }}"
+    group: "{{ pi_user }}"
+    mode: 0755
+    state: directory
+
+- name: Copy kivy config.ini file
+  copy:
+    src: config.ini
+    dest: "/home/{{ pi_user }}/.kivy/"
+    owner: "{{ pi_user }}"
+    group: "{{ pi_user }}"
+    mode: 0644

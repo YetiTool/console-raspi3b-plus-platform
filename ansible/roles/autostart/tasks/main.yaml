@@ -1,0 +1,12 @@
+---
+- name: autostart
+  include: autostart.yaml
+  tags: autostart
+
+- name: splashscreen
+  include: splashscreen.yaml
+  tags: splashscreen
+
+- name: silent boot
+  include: silent_boot.yaml
+  tags: silent_boot

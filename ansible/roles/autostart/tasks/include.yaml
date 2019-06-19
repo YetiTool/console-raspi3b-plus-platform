@@ -2,9 +2,6 @@
 - shell: 'egrep -c "kernel .* {{ entry }}( |$)" "{{ file }}" | cat'
   register: entry_exists
 
-#- debug:
-#    msg: "{{ entry_exists }}"
-
 - replace:
     dest: "{{ file }}"
     regexp: '^(kernel .*)$'

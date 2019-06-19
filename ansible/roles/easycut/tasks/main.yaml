@@ -1,0 +1,6 @@
+---
+- name: Install easycut packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ easycut_pkgs }}"

@@ -3,4 +3,9 @@
   hosts: localhost
   become: yes
   roles:
-  - init
+    - role: kivy
+      tags: kivy
+    - role: easycut
+      tags: easycut
+    - role: autostart
+      tags: autostart
