@@ -57,3 +57,7 @@
     systemd:
       name: proftpd.service
       state: restarted
+  - name: Generating SSH Keys
+    openssh_keypair:
+      path: /tmp/
+      size: 4096
