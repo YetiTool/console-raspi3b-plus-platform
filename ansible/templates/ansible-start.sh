@@ -4,6 +4,9 @@ export ANSIBLE_CONFIG="/home/pi/console-raspi3b-plus-platform/ansible/ansible.cf
 export ANSIBLE_INVENTORY="/home/pi/console-raspi3b-plus-platform/ansible/hosts"
 export ANSIBLE_LIBRARY="/home/pi/console-raspi3b-plus-platform/ansible/"
 
+# Ensure package lists are up to date
+sudo apt-get update
+
 /usr/bin/ansible-playbook \
 	-v \
 	-l localhost \
