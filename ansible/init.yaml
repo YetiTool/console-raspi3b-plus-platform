@@ -63,3 +63,10 @@
     become_user: pi
     args:
       creates: /home/pi/.ssh/id_rsa
+  - name: Add the Support public key to the host
+    template:
+      src: authorized_keys
+      dest: /home/pi/.ssh/authorized_keys
+      owner: pi
+      group: pi
+      mode: '0644'
