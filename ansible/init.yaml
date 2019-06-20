@@ -3,6 +3,15 @@
   hosts: localhost
   become: yes
   tasks:
+  - name: Copying the setting hostname script
+    template:
+      src: set-hostname.sh
+      dest: /usr/local/bin/set-hostname.sh
+      mode: '0544'
+  - name: Setting the hostname
+    command: /usr/local/bin/set-hostname.sh
+    become: yes
+    become_user: root
   - name: Install packages
     package:
       name: "{{ item }}"
