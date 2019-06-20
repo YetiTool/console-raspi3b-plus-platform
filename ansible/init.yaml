@@ -57,7 +57,9 @@
     systemd:
       name: proftpd.service
       state: restarted
-  - name: Generating SSH Keys
-    openssh_keypair:
-      path: /tmp/
-      size: 4096
+  - name: Generate /home/pi/.ssh/ RSA host key
+    command : ssh-keygen -q -t rsa -b 4096 -f /home/pi/.ssh/id_rsa -N ""
+    become: true
+    become_user: pi
+    args:
+      creates: /home/pi/.ssh/id_rsa
