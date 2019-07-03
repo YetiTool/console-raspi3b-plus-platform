@@ -1,3 +1,6 @@
 pkgs:
 - python-pip
 - proftpd-basic
+
+exim_dc_eximconfig_configtype: internet
+exim_dc_localdelivery: mail_spool
