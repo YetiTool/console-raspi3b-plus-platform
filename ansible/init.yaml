@@ -2,6 +2,8 @@
 - name: Initialise via Ansible
   hosts: localhost
   become: yes
+  roles:
+  - geerlingguy.exim
   tasks:
   - name: Copying the setting hostname script
     template:
