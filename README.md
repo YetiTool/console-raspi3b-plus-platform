@@ -217,12 +217,8 @@ sudo systemctl restart ansible.service
 Try a 'sudo reboot' - hope you didn't get any typo's :-)
 
 # Make image of result
-UNTESTED:
-* [Shrink](https://github.com/qrti/shrink)
-  * From another Linux machine (if using Windows, download Ubuntu from the store and [setup the terminal](https://stackoverflow.com/questions/38832230/copy-paste-in-bash-on-ubuntu-on-windows))
-  * `git clone https://github.com/qrti/shrink.git`
-  * `sudo apt-get install -y gparted`
-  * `sudo apt-get install -y pv`
+
+<TODO>
 
 # Useful Links
 * https://scribles.net/customizing-boot-up-screen-on-raspberry-pi/
