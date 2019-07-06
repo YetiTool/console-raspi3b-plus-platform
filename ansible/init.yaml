@@ -82,6 +82,8 @@
       group: pi
       mode: '0644'
   - name: Ensure journalctl writes files to disk
+    become: true
+    become_user: root
     lineinfile:
       path: /etc/systemd/journald.conf
       regexp: '^Storage='
