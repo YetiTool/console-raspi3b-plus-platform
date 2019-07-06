@@ -18,7 +18,7 @@ tar -czf /tmp/$HOSTNAME-state.tar.gz /tmp/state
 echo "Smart bench state" \
     | mail \
     -s "State from: $HOSTNAME" \
-    support@yetitool.com \
+    platform.build@yetitool.com \
     -A /tmp/$HOSTNAME-state.tar.gz
 
 # Cleanup
