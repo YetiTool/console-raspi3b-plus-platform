@@ -1,6 +1,9 @@
 pkgs:
 - python-pip
 - proftpd-basic
+- avrdude
+- pigpio
+- python-pigpio
 
 exim_dc_eximconfig_configtype: internet
 exim_dc_localdelivery: mail_spool
