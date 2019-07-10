@@ -86,3 +86,9 @@
       name: /etc/systemd/journald.conf
       regexp: '^Storage='
       line: Storage=persistent
+  - name: Cron job to keep the journalctl file low
+    cron:
+      user: root
+      name: "clean logs"
+      minute: "*/5"
+      job: "journalctl --vacuum-size=100M"
