@@ -90,5 +90,5 @@
     cron:
       user: root
       name: "clean logs"
-      minute: "5"
+      minute: "*/5"
       job: "journalctl --vacuum-size=100M"
