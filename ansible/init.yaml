@@ -92,3 +92,9 @@
       name: "clean logs"
       minute: "*/5"
       job: "journalctl --vacuum-size=100M"
+  - name:
+    lineinfile:
+      name: /etc/avrdude.conf
+      state: present
+      insertafter: 'wiring'
+      line: '  reset = 17;'
