@@ -7,7 +7,7 @@
 
 - name: Replace splashscreen image
   copy:
-    src: ~/easycut-smartbench/src/asmcnc/skavaUI/img/debian-logo.png
+    src: "/home/{{ pi_user }}/easycut-smartbench/src/asmcnc/skavaUI/img/debian-logo.png"
     dest: /usr/share/plymouth/debian-logo.png
     owner: root
     group: root

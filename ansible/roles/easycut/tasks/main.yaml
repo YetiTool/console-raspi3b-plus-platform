@@ -4,3 +4,21 @@
     name: "{{ item }}"
     state: present
   with_items: "{{ easycut_pkgs }}"
+
+- name: Create directories
+  file:
+    name: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  with_items:
+    - /media/usb
+    - "/home/{{ pi_user }}/router_ftp"
+
+- name: Git clone easycut repo
+  git:
+    repo: 'https://github.com/YetiTool/easycut-smartbench.git'
+    dest: "/home/{{ pi_user }}/easycut-smartbench/"
+    clone: yes
+  become: no

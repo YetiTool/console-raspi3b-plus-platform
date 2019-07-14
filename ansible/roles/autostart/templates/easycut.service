@@ -4,8 +4,8 @@ After=multi-user.target
 
 [Service]
 Type=idle
-ExecStart=/home/pi/starteasycut.sh
-User=pi
+ExecStart=/home/{{ pi_user }}/starteasycut.sh
+User={{ pi_user }}
 
 [Install]
 WantedBy=multi-user.target

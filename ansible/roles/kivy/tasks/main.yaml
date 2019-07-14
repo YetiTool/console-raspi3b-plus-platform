@@ -6,15 +6,15 @@
   with_items: "{{ kivy_pkgs }}"
 
 - name: Check for Cython module
-  shell: pip freeze | grep -c '^Cython==0.28.2$'
+  shell: pip freeze | grep -c '^Cython==0.28.2$' | cat
   register: cython_exists
 
 - name: Install Cython module
-  shell: 'pip install -U Cython==0.28.2'
+  shell: pip install -U Cython==0.28.2
   when: cython_exists.stdout == "0"
 
 - name: Check for kivy module
-  shell: pip freeze | grep -c '^Kivy==1.10.1$'
+  shell: pip freeze | grep -c '^Kivy==1.10.1$' | cat
   register: kivy_exists
 
 - name: Install kivy module

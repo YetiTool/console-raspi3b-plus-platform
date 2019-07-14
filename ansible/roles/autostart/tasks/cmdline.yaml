@@ -1,8 +1,10 @@
 ---
-- shell: 'egrep -c "kernel .* {{ entry }}( |$)" "{{ file }}" | cat'
+- name: Check if kernel entry exists
+  shell: 'egrep -c "kernel .* {{ entry }}( |$)" "{{ file }}" | cat'
   register: entry_exists
 
-- replace:
+- name: Replace kernel entry
+  replace:
     dest: "{{ file }}"
     regexp: '^(kernel .*)$'
     replace: "\\1 {{ entry }}"

@@ -1,7 +1,7 @@
 ---
-- name: autostart
-  include: autostart.yaml
-  tags: autostart
+- name: startup (ansible and easycut)
+  include: startup.yaml
+  tags: startup
 
 - name: splashscreen
   include: splashscreen.yaml

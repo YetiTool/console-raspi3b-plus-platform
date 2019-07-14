@@ -12,7 +12,7 @@
     replace: 'console=tty3'
 
 - name: Remove verbose logging at startup
-  include: include.yaml entry="{{ item }}" file='/boot/cmdline.txt'
+  include: cmdline.yaml entry="{{ item }}" file='/boot/cmdline.txt'
   with_items:
     - splash
     - quiet
@@ -24,14 +24,14 @@
   lineinfile:
     dest: '/etc/systemd/system/autologin@.service'
     regexp: '^ExecStart='
-    line: 'ExecStart=-/sbin/agetty --skip-login --noclear --noissue --login-options "-f {{ pi_user}}" %I $TERM'
+    line: 'ExecStart=-/sbin/agetty --skip-login --noclear --noissue --login-options "-f {{ pi_user }}" %I $TERM'
 
 - name: Hush login
-  file:
-    dest: "/home/{{ pi_user }}/.hushlogin"
+  copy:
+    src: .hushlogin
+    dest: "/home/{{ pi_user }}/"
     owner: "{{ pi_user }}"
     group: "{{ pi_user }}"
-    state: touch
 
 - name: Suppress kernel messages
   lineinfile:

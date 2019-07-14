@@ -3,7 +3,10 @@
   template:
     src: ansible.service
     dest: /lib/systemd/system/ansible.service
+    owner: root
+    group: root
     mode: 0644
+  register: ansible_service
 
 - name: Reload systemctl to re-read configs
   systemd:
@@ -12,16 +15,18 @@
     state: started
     enabled: yes
     masked: no
+  when: ansible_service.changed
 
-- name: Create bash script to run app
-  copy:
+- name: Create bash script to run easycut app
+  template:
     src: starteasycut.sh
     dest: "/home/{{ pi_user }}/"
     owner: "{{ pi_user }}"
+    group: "{{ pi_user }}"
     mode: 0700
 
-- name: Create systemd service file
-  copy:
+- name: Create easycut service config
+  template:
     src: easycut.service
     dest: /lib/systemd/system/
     owner: root
