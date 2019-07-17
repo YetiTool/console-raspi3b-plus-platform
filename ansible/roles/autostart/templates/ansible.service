@@ -9,7 +9,7 @@ Environment="ANSIBLE_INVENTORY=/home/pi/console-raspi3b-plus-platform/ansible/ho
 Environment="ANSIBLE_LIBRARY=/home/pi/console-raspi3b-plus-platform/ansible/"
 ExecStart=/usr/bin/ansible-playbook -v -l localhost /home/pi/console-raspi3b-plus-platform/ansible/init.yaml
 ExecStop=/bin/false
-User=root
+User={{ pi_user }}
 
 [Install]
 WantedBy=multi-user.target

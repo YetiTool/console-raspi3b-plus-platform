@@ -19,6 +19,7 @@
 - name: Git clone easycut repo
   git:
     repo: 'https://github.com/YetiTool/easycut-smartbench.git'
-    dest: "/home/{{ pi_user }}/easycut-smartbench/"
+    dest: "/home/{{ pi_user }}/easycut-smartbench"
     clone: yes
+    force: yes
   become: no
