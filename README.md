@@ -90,6 +90,8 @@ Build steps mostly taken from Kivy [site](https://kivy.org/doc/stable/installati
        gstreamer1.0-{omx,alsa} python-dev libmtdev-dev \
        xclip xsel
     ```
+* pip install
+  * `sudo apt-get install python-pip`
 * cython install (long time!)
   * `sudo pip install -U Cython==0.28.2`
 * kivy (long install!) - currently testing 1.10.1
