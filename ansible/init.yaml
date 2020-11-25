@@ -98,3 +98,11 @@
       state: present
       insertafter: 'wiring'
       line: '  reset = 17;'
+  - name: ensure file exists
+  copy:
+    content: ""
+    dest: /home/pi/smartbench_dam.txt
+    force: no
+    group: pi
+    owner: pi
+    mode: 0666
