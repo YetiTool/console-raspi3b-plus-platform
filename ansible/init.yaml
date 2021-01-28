@@ -98,3 +98,9 @@
       state: present
       insertafter: 'wiring'
       line: '  reset = 17;'
+  -name:
+    lineinfile:
+      name: /boot/config.txt
+      state: present
+      insertafter: 'enable_uart=1'
+      line: 'dtoverlay=pi3-disable-bt'
