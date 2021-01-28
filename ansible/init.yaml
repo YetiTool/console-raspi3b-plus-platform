@@ -104,3 +104,9 @@
       state: present
       insertafter: 'enable_uart=1'
       line: 'dtoverlay=pi3-disable-bt'
+  - name: Start pigpio daemon on startup
+    lineinfile:
+      name: /home/pi/starteasycut.sh
+      state: present
+      insertafter: 'echo "start easycut"'
+      line: 'sudo pigpiod'
