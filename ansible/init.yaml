@@ -98,7 +98,7 @@
       state: present
       insertafter: 'wiring'
       line: '  reset = 17;'
-  -name:
+  - name: Disable bluetooth to use the AMA0 port
     lineinfile:
       name: /boot/config.txt
       state: present
