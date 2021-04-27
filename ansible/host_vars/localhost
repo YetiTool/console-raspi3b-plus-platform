@@ -4,6 +4,7 @@ pkgs:
 - avrdude
 - pigpio
 - python-pigpio
+- pika
 
 exim_dc_eximconfig_configtype: internet
 exim_dc_localdelivery: mail_spool
