@@ -118,6 +118,8 @@ EasyCut is YetiTool's UI for SmartBench
     ```
 * Clone from the SmartBench repository:
   * `cd && git clone https://github.com/YetiTool/easycut-smartbench.git`
+  * `cd && git clone https://github.com/YetiTool/console-raspi3b-plus-platform.git`
+  
 
 #### Autostart
 To enable the pi to autostart EasyCut app on booting
