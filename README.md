@@ -210,7 +210,7 @@ dmesg --console-off
 sudo apt -y install ansible
 cd && git clone https://github.com/YetiTool/console-raspi3b-plus-platform.git
 cd console-raspi3b-plus-platform/ansible
-ansible-playbook -v -i hosts -l localhost init.yaml
+sudo ansible-playbook -v -i hosts -l localhost init.yaml
 ```
 
 Note: After the above initial Ansible run above, a service will be added to `systemctl`, so for future Ansible runs, or for integration into EasyCut:
